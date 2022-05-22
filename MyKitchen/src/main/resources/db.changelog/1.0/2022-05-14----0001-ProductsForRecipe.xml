@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2022-04-15----00001-ProductsForRecipe" author="K_Yaroslav">
+        <preConditions>
+            <not>
+                <tableExists tableName="products_for_recipe"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="products_for_recipe">
+
+            <column name="id"
+                    type="NUMERIC(19,0)"
+                    autoIncrement="true">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+
+            </column>
+
+
+            <column name="Recipe_id"
+                    type="NUMERIC(19,0)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_products_for_recipe_Recipe"
+                             references="Recipe(id)"
+                             deleteCascade="true"/>
+
+            </column>
+            <column name="Products_id"
+                    type="NUMERIC(19,0)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_products_for_recipe_Products"
+                             references="Products(id)"
+                             deleteCascade="true"/>
+
+            </column>
+
+            <column name="weight"
+                    type="NUMERIC(19,0)">
+                <constraints nullable="false"/>
+
+            </column>
+
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
