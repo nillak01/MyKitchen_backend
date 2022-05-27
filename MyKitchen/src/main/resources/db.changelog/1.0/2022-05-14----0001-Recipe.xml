@@ -33,52 +33,52 @@
             </column>
 
             <column name="point_1"
-                    type="VARCHAR(100)">
+                    type="VARCHAR(200)">
                 <constraints nullable="true"/>
 
             </column>
             <column name="point_2"
-                    type="VARCHAR(100)">
+                    type="VARCHAR(200)">
                 <constraints nullable="true"/>
 
             </column>
             <column name="point_3"
-                    type="VARCHAR(100)">
+                    type="VARCHAR(200)">
                 <constraints nullable="true"/>
 
             </column>
             <column name="point_4"
-                    type="VARCHAR(100)">
+                    type="VARCHAR(200)">
                 <constraints nullable="true"/>
 
             </column>
             <column name="point_5"
-                    type="VARCHAR(100)">
+                    type="VARCHAR(200)">
                 <constraints nullable="true"/>
 
             </column>
             <column name="point_6"
-                    type="VARCHAR(100)">
+                    type="VARCHAR(200)">
                 <constraints nullable="true"/>
 
             </column>
             <column name="point_7"
-                    type="VARCHAR(100)">
+                    type="VARCHAR(200)">
                 <constraints nullable="true"/>
 
             </column>
             <column name="point_8"
-                    type="VARCHAR(100)">
+                    type="VARCHAR(200)">
                 <constraints nullable="true"/>
 
             </column>
             <column name="point_9"
-                    type="VARCHAR(100)">
+                    type="VARCHAR(200)">
                 <constraints nullable="true"/>
 
             </column>
             <column name="point_10"
-                    type="VARCHAR(100)">
+                    type="VARCHAR(200)">
                 <constraints nullable="true"/>
 
             </column>

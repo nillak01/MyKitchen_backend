@@ -3,6 +3,7 @@ package com.samsung.rest.controller;
 
 import com.samsung.domain.DeviceForRecipe;
 import com.samsung.rest.dto.DeviceForRecipeDto;
+import com.samsung.rest.dto.ProductsForRecipeDto;
 import com.samsung.service.DeviceForRecipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -47,11 +48,17 @@ public class DeviceForRecipeController {
         return DeviceForRecipeDto.toDto(deviceForRecipe);
     }
 
-    @GetMapping("/device_for_recipe/{id}")
-    public  DeviceForRecipeDto getById(@PathVariable int id){
+    @GetMapping("/device_for_recipe/{recipe_id}")
+    public  List<DeviceForRecipeDto> getById(@PathVariable int recipe_id){
 
-        return DeviceForRecipeDto.toDto(deviceForRecipeService.getById(id));
+        return deviceForRecipeService
+                .getByRecipe_id(recipe_id)
+                .stream()
+                .map(DeviceForRecipeDto::toDto)
+                .collect(Collectors.toList());
     }
+
+
 
     @DeleteMapping("/device_for_recipe/{id}")
     public void deleteById(@PathVariable int id){

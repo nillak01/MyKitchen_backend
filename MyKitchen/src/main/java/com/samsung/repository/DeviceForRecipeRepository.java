@@ -10,7 +10,7 @@ import java.util.List;
 public interface DeviceForRecipeRepository extends JpaRepository<DeviceForRecipe, Integer> {
 
     @Override
-    @EntityGraph(attributePaths = {"recipe","device"})
+    @EntityGraph(attributePaths = {"recipe", "device"})
     List<DeviceForRecipe> findAll();
 
     List<DeviceForRecipe>  findByRecipeId(int id);

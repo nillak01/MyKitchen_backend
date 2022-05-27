@@ -111,7 +111,7 @@ public class MyKitchenDemoSout implements MyKitchenDemo{
 
         for (ProductsForRecipe productsForRecipe : productsForRecipeRepository.findAll()) {
 
-            System.out.println(productsForRecipe.getRecipe().getName() + " - " + productsForRecipe.getProducts().getName());
+            System.out.println(productsForRecipe.getRecipe().getName() + " - " + productsForRecipe.getProducts().getName() +" - " + productsForRecipe.getWeight());
         }
 
         System.out.println("======================\n");

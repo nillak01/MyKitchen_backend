@@ -13,11 +13,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductsForRecipeServiceimpl implements ProductsForRecipeService{
 
-    ProductsForRecipeRepository productsForRecipeRepository;
+    private final ProductsForRecipeRepository productsForRecipeRepository;
 
     private final RecipeRepository recipeRepository;
 
     private final ProductsRepository productsRepository;
+
+
 
 
     @Override

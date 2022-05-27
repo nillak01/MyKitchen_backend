@@ -52,11 +52,22 @@ public class ProductsController {
         productsService.deleteById(id);
     }
 
-    @GetMapping("/products/{id}")
+    /*@GetMapping("/products/{id}")
     public ProductsDto getProductsById(@PathVariable int id){
 
         Products products = productsService.getById(id);
 
         return ProductsDto.toDto(products);
+    }*/
+
+    @GetMapping("/products/{my}")
+    public List<ProductsDto> getProductsByMy(@PathVariable boolean my){
+
+
+        return productsService
+                .getByMy(my)
+                .stream()
+                .map(ProductsDto::toDto)
+                .collect(Collectors.toList());
     }
 }

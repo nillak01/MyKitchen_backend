@@ -27,7 +27,7 @@ public class DeviceController {
     }
 
     @PostMapping("/device")
-    public DeviceDto insertAuthor(@RequestBody DeviceDto deviceDto){
+    public DeviceDto insertDevice(@RequestBody DeviceDto deviceDto){
 
         Device device = deviceService.insert(DeviceDto.toDomainObject(deviceDto));
 
@@ -35,7 +35,7 @@ public class DeviceController {
     }
 
     @PutMapping("/device/{id}")
-    public DeviceDto updateAuthor(@PathVariable int id,
+    public DeviceDto updateDevice(@PathVariable int id,
                                   @RequestParam String name,
                                   @RequestParam boolean my){
 
@@ -51,11 +51,21 @@ public class DeviceController {
         deviceService.deleteById(id);
     }
 
-    @GetMapping("/device/{id}")
+    /*@GetMapping("/device/{id}")
     public DeviceDto getDeviceById(@PathVariable int id){
 
         Device device = deviceService.getById(id);
 
         return DeviceDto.toDto(device);
+    }*/
+
+    @GetMapping("/device/{my}")
+    public List<DeviceDto> getDeviceByMy(@PathVariable boolean my){
+
+        return deviceService
+                .getByMy(my)
+                .stream()
+                .map(DeviceDto::toDto)
+                .collect(Collectors.toList());
     }
 }

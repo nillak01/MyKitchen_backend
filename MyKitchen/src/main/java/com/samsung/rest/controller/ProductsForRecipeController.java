@@ -5,6 +5,7 @@ import com.samsung.domain.ProductsForRecipe;
 import com.samsung.rest.dto.ProductsForRecipeDto;
 import com.samsung.service.ProductsForRecipeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
+@Component
 public class ProductsForRecipeController {
 
     private final ProductsForRecipeService productsForRecipeService;
@@ -51,11 +53,19 @@ public class ProductsForRecipeController {
         return ProductsForRecipeDto.toDto(productsForRecipe);
     }
 
-    @GetMapping("/products_for_recipe/{id}")
-    public  ProductsForRecipeDto getById(@PathVariable int id){
+    @GetMapping("/products_for_recipe/{recipe_id}")
+    public  List<ProductsForRecipeDto> getByRecipeId(@PathVariable int recipe_id){
 
-        return ProductsForRecipeDto.toDto(productsForRecipeService.getById(id));
+        /*List<ProductsForRecipeDto> productsForRecipeDtoList = new ProductsForRecipeDto.toDto(productsForRecipeService.getByRecipe_id(id));*/
+
+        return productsForRecipeService
+                .getByRecipe_id(recipe_id)
+                .stream()
+                .map(ProductsForRecipeDto::toDto)
+                .collect(Collectors.toList());
     }
+
+
 
     @DeleteMapping("/products_for_recipe/{id}")
     public void deleteById(@PathVariable int id){

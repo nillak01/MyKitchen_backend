@@ -62,11 +62,22 @@ public class RecipeController {
         recipeService.deleteById(id);
     }
 
-    @GetMapping("/recipe/{id}")
+    /*@GetMapping("/recipe/{id}")
     public RecipeDto getRecipeById(@PathVariable int id){
 
         Recipe recipe = recipeService.getById(id);
 
         return RecipeDto.toDto(recipe);
+    }*/
+
+    @GetMapping("/recipe/{my}")
+    public List<RecipeDto> getRecipeByMy(@PathVariable boolean my){
+
+
+        return recipeService
+                .getByMy(my)
+                .stream()
+                .map(RecipeDto::toDto)
+                .collect(Collectors.toList());
     }
 }
